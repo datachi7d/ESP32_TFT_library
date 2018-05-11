@@ -176,6 +176,11 @@ void IRAM_ATTR disp_spi_transfer_cmd_data(int8_t cmd, uint8_t *data, uint32_t le
 static void IRAM_ATTR disp_spi_transfer_addrwin(uint16_t x1, uint16_t x2, uint16_t y1, uint16_t y2) {
 	uint32_t wd;
 
+    x1 += 2;
+    x2 += 2;
+    y1 += 3;
+    y2 += 3;
+
     taskDISABLE_INTERRUPTS();
 	// Wait for SPI bus ready
 	while (disp_spi->host->hw->cmd.usr);

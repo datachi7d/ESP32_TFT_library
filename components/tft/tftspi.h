@@ -69,26 +69,26 @@
 
 // ** Set the correct configuration for Adafruit TFT Feather
 // ---------------------------------------------------------
-#define DEFAULT_DISP_TYPE   DISP_TYPE_ILI9341
-#define DEFAULT_TFT_DISPLAY_WIDTH   240
-#define DEFAULT_TFT_DISPLAY_HEIGHT  320
+#define DEFAULT_DISP_TYPE   DISP_TYPE_ST7735R
+#define DEFAULT_TFT_DISPLAY_WIDTH   128
+#define DEFAULT_TFT_DISPLAY_HEIGHT  128
 #define DISP_COLOR_BITS_24          0x66
 #define DEFAULT_GAMMA_CURVE         0
-#define DEFAULT_SPI_CLOCK           26000000
+#define DEFAULT_SPI_CLOCK           8000000
 #define TFT_INVERT_ROTATION         0
-#define TFT_INVERT_ROTATION1        0
-#define TFT_RGB_BGR                 0x08
+#define TFT_INVERT_ROTATION1        1
+#define TFT_RGB_BGR                 0x00
 
-#define USE_TOUCH                   TOUCH_TYPE_STMPE610
+#define USE_TOUCH                   TOUCH_TYPE_NONE
 
-#define PIN_NUM_MISO 19		// SPI MISO
-#define PIN_NUM_MOSI 18		// SPI MOSI
+#define PIN_NUM_MISO 25		// SPI MISO
+#define PIN_NUM_MOSI 23		// SPI MOSI
 #define PIN_NUM_CLK  5		// SPI CLOCK pin
-#define PIN_NUM_CS   15		// Display CS pin
-#define PIN_NUM_DC   33		// Display command/data pin
-#define PIN_NUM_TCS  32		// Touch screen CS pin (NOT used if USE_TOUCH=0)
+#define PIN_NUM_CS   16		// Display CS pin
+#define PIN_NUM_DC   17		// Display command/data pin
+#define PIN_NUM_TCS  0		// Touch screen CS pin (NOT used if USE_TOUCH=0)
 
-#define PIN_NUM_RST  0  	// GPIO used for RESET control (#16)
+#define PIN_NUM_RST  9  	// GPIO used for RESET control (#16)
 #define PIN_NUM_BCKL 0  	// GPIO used for backlight control
 #define PIN_BCKL_ON  0  	// GPIO value for backlight ON
 #define PIN_BCKL_OFF 1  	// GPIO value for backlight OFF
@@ -576,11 +576,11 @@ static const uint8_t  STP7735R_init[] = {
 static const uint8_t Rcmd2green[] = {
   2,						//  2 commands in list:
   TFT_CASET  , 4      ,		//  1: Column addr set, 4 args, no delay:
-  0x00, 0x02,				//     XSTART = 0
-  0x00, 0x7F+0x02,			//     XEND = 129
+  0x00, 0x00,				//     XSTART = 0
+  0x00, 0x7F,			//     XEND = 129
   TFT_PASET  , 4      ,	    //  2: Row addr set, 4 args, no delay:
-  0x00, 0x01,				//     XSTART = 0
-  0x00, 0x9F+0x01			//     XEND = 160
+  0x00, 0x00,				//     XSTART = 0
+  0x00, 0x7F			//     XEND = 160
 };
 
 // Init for 7735R, part 2 (red tab only)
